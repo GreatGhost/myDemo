@@ -1,0 +1,187 @@
+/* pages/sailing/sailing.wxss */
+page{
+    background:rgba(242,242,242,1);
+    min-height:100%;
+}
+.Moments{
+}
+.btn-add-edit{
+    display: flex;
+    padding:24rpx 0;
+    background: #fff;
+}
+.btn-add-edit>view{
+    flex:1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-add-edit view+view{
+    border-left:2rpx solid #F2F2F2;
+}
+.btn-add-edit image{
+    width:40rpx;
+    height: 40rpx;
+}
+.btn-add-edit .content{
+    height:44rpx;
+    margin-left:12rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(255,82,38,1);
+    line-height:44rpx;
+}
+.list{
+    padding:24rpx 24rpx 104rpx;
+    background:rgba(242,242,242,1);
+}
+.list .item{
+    padding:30rpx;
+    margin-bottom:30rpx;
+    background:rgba(255,255,255,1);
+    border-radius:8rpx;
+    box-sizing: border-box;
+
+}
+.list .item.item-choose{
+    display: flex;
+    padding:30rpx 0;
+}
+.item-choose{
+    flex-basis:94rpx;
+    display: flex;
+    padding:0 30rpx 0 26rpx;
+    box-sizing: border-box;
+    align-items: center;
+}
+.item-choose>.content{
+    flex:1;
+}
+.choose,.choose{
+    padding:0 30rpx 0 26rpx;
+    height:100%;
+}
+.choose image,.choose image{
+    width:40rpx;
+    height:40rpx;
+}
+.list .info1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 28rpx;
+}
+.info1 image{
+    width:60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+.info1 .contact_person{
+    height:44rpx;
+    margin-left:20rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(0,0,0,1);
+    line-height:44rpx;
+}
+.info1 .tag{
+    height:36rpx;
+    margin-left:20rpx;
+    padding:0 10rpx;
+    border-radius:4rpx;
+    line-height: 36rpx;
+    border:1rpx solid rgba(40,159,255,1);
+    font-size:24rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(40,159,255,1);
+}
+.info1 .tag1{
+    border:1rpx solid #289FFF;
+    color:#289FFF;
+}
+.info1 .tag2{
+    border:1rpx solid #FF5226;
+    color:#FF5226;
+}
+
+.info1 .tag3{
+    border:1rpx solid rgb(130,195,45);
+    color:rgb(130,195,45);
+}
+
+.info1 .tag4{
+    border:1rpx solid #999999;
+    color:#999999;
+}
+
+.list .info2{
+    display: flex;
+    padding-top:28rpx;
+    border-top:1rpx solid #F2F2F2;
+}
+.list .info2 image{
+    width:88rpx;
+    height:88rpx;
+    border-radius:8rpx;
+    margin-right:20rpx;
+}
+.list .info2 .content{
+    
+}
+.info2 .content .name{
+    height:44rpx;
+    margin-bottom: 16rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(0,0,0,1);
+    line-height:44rpx;
+}
+.info2 .addr{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.info2 .addr image{
+    width: 28rpx;
+    height:28rpx;
+    margin-right:12rpx;
+}
+.info2 .addr view{
+    height:40rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(74,74,74,1);
+    line-height:40rpx;
+}
+.btn-delete{
+    display: flex;
+    position: fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background: #fff;
+    padding:30rpx 0;  
+}
+.btn-delete view{
+    flex:1;
+    text-align: center;
+    height:44rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(0,0,0,1);
+    line-height:44rpx;
+}
+.btn-delete view:first-child{
+    color:#000;
+}
+.btn-delete view:last-child{
+    color:#FF5226;
+}
+

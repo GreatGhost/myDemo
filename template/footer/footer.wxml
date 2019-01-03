@@ -1,0 +1,5 @@
+<template name="footer">
+  <view>1</view>
+  <view wx:for="{{footer.arr}}">{{item}}</view>
+</template>
+

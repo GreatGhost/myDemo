@@ -1,0 +1,28 @@
+<view class="sailDetail">
+    <view class="labels">
+        <image src="/resource/a.png"></image>
+        <view class="name">吴节操</view>
+        <view class="tag">企业认证</view>
+        <view class="user_type">船主</view>
+    </view>
+    <view class="content">
+        <view class="info1">18623456789</view>
+        <view class="info2">
+            <image src="/resource/a.png"></image>
+            <view class="detail">
+                <view class="detail1">杭州新船帮科技有限公司</view>
+                <view class="addr">
+                    <image src="/resource/location.svg"></image>
+                </view>
+            </view>
+        </view>
+        <view class="info3">
+            <image src="/resource/location.svg"></image>
+            <view class="detail">我是备注我是备注我是备注我是备注我是备注我是备注我是备注</view>
+        </view>
+    </view>
+    <view class="btns">
+        <view class="edit">编辑</view>
+        <view class="phone">拨打电话</view>
+    </view>
+</view>
