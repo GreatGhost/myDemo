@@ -1,11 +1,8 @@
-<!-- 
-<view bind:tap="map">调到map</view>
-<view bindtap="getSail">获取航运圈</view>
-<view bindtap="getFriend">添加好友</view>
-<input type='text' class='demo' placeholder='请输入用户姓名' />
 
-<input type='text' class='demo2' placeholder='请输入用户姓名' />
-<button bindtap="tap2">单击</button> -->
-<import src="/template/footer/footer.wxml" />
-<template is="footer" data="{{footer}}"></template>
-<view>{{address}}</view>
+<!-- <view>{{address}}</view>
+<button open-type='share' bindtap="tap">分享好友</button>
+<button bindtap="sendCode" style="{{disabled?'#ff6f10':'#999'}}">{{getCode}}</button>
+<view class="time">{{lastTime}}</view> -->
+<import src="/template/goodsEntry/goodsEntry.wxml" />
+<template is="goodsEntry" data="{{item}}"></template>
+<view class="text">{{value}}</view>

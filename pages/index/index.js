@@ -14,9 +14,9 @@ Page({
     switch:false,
     footer:{
       msg:'1',
-      arr:[1,2,3],
-      
-    }
+      arr:[1,2,3],      
+    },
+    item:{title:'录入卸货重量',mask:true},
   },
   map(){
     wx.navigateTo({
@@ -69,9 +69,9 @@ Page({
     console.log(start+end);
   },
   onLoad: function () {
-    this.getPhp();
-    this.setTime();
-    this.setCanvas();
+    //this.setTime();
+    //this.sendCode();
+    //this.getLocation();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -98,56 +98,8 @@ Page({
         }
       })
     }
-    this.getLocation();
   },
-  onShow(){
-    console.log(this.route)
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  tapName(event){
-    console.log(event);
-    let arr=event.currentTarget.dataset.value;
-    console.log(typeof arr);
-  },
-  bindDateChange(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      date: e.detail.value
-    })
-  },
-  getSail(){
-    wx.navigateTo({
-      url:"/pages/sailing/sailing"
-    })
-  },
-  getFriend(){
-    wx.navigateTo({
-      url:"/pages/addFriend/addFriend"
-    })
-  },
-  getFriendDetail(){
-    wx.navigateTo({
-      url:'/pages/sailDetail/sailDetail',
-    })
-  },
-  tap: util.throttle(function (e) {
-    console.log(this);
-    wx.navigateTo({
-      url: '/pages/sailDetail/sailDetail',
-    })
-  }),
-  tap2(){
-    wx.navigateTo({
-      url: '/pages/sailDetail/sailDetail',
-    })
-  },
+
   getLocation(){
     let that=this;
     wx.getLocation({
@@ -169,5 +121,51 @@ Page({
         })
       },
     })
+  },
+  onShareAppMessage(res){
+    if(res.from==='button'){
+      return {
+        title:'一起学习',
+        path:'pages/index/index',
+        imageUrl:'../../resource/image/location.png'
+      }
+    }
+  },
+   sendCode: function (e) {
+    var that = this;
+    var times = 24*60*60*1000;
+    var i = setInterval(function () {
+      times-=1000;
+      if (times <= 0) {
+        that.setData({
+          color: "#ff6f10",
+          disabled: false,
+          getCode: "获取验证码",
+        })
+        clearInterval(i)
+      } else {
+        let hour=Math.floor(times/1000/60/60%24);
+        let minute=Math.floor(times/1000/60%60);
+        let second=Math.floor(times/1000%60);
+        that.setData({
+          getCode: "重新获取" + times + "s",
+          lastTime:hour+'小时'+minute+'分钟'+second+'秒',
+          color: "#999",
+          disabled: true
+        })
+      }
+    }, 1000)
+  },
+  cancel(){
+    console.log('取消');
+    this.setData({item:{mask:false}})
+  },
+  confirm(){
+    console.log('确认');
+    this.setData({item:{mask:false}})
+  },
+  change(e){
+    let value=e.detail.value;
+    this.setData({value})
   }
 })

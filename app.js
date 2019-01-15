@@ -1,5 +1,12 @@
 //app.js
 App({
+  cfg:{},
+  conf:{
+    
+  },
+  clientInfo:{},
+  userInfo:null,
+  localUser:null,
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
