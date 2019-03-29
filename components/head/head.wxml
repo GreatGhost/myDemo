@@ -1,0 +1,8 @@
+<!--components/head/head.wxml-->
+    <view class="head">
+        <slot name="login"></slot>
+        <view class="head-icon">
+                <image src="../../resource/icon/back.png" />
+        </view>     
+        <view class="head-title">{{headTitle}}</view>
+    </view>

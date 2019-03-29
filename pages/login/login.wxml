@@ -1,0 +1,17 @@
+<!--pages/login/login.wxml-->
+<view class="login">
+    <template-head headTitle="{{title}}">
+    </template-head>
+    <view class="login-item" wx:for="{{loginInput}}" wx:key="{{index}}">
+        <view class="name">{{item.name}}</view>
+        <input class="value" value="{{item.value}}" />
+        <switch checked="{{item.pwdIsShow}}" bindchange="switch1Change" wx:if="{{item.id=='password'}}" />
+        <template-random-code id="code" wx:if="{{item.id=='code'}}"></template-random-code>
+    </view>
+    <view class="login-tips">
+        <view>温馨提示：未注册过的账号，登录时将自动注册</view>
+        <view>注册过的用户可凭账号密码登录</view>
+    </view>
+    <button type="primary" form-type="submit">登录</button>
+    <view class="reset-login">重置密码</view>
+</view>

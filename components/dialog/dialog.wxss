@@ -1,0 +1,63 @@
+/* components/dialog.wxss */
+/* 下拉框的实现 */
+.drop-bot {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: 1000;
+}
+.drop-bot .box{
+    width: 100%;
+    border-top: 1px solid #ddd;
+    overflow: hidden;
+    height: 0;
+    animation-fill-mode: forwards;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.item_list .li.style {
+}
+.item_list .li{
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1rpx solid #ebebeb;
+    background: #fff;
+}
+@keyframes slidedown{
+    from {
+        height: 0;
+    }
+    to {
+        height: 365rpx;
+    }
+}
+@keyframes slideup{
+    from {
+        height: 365rpx;
+    }
+    to {
+        height: 0;
+    }
+}
+.open{
+    animation: slidedown .5s;
+}
+.close{
+    animation: slideup .5s;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}

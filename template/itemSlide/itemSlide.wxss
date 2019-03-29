@@ -1,0 +1,49 @@
+.item-slide-wrapper{
+    box-sizing: border-box;
+    width:750rpx;
+    margin:0 auto;
+    padding:40rpx 0;
+}
+.item-slide-wrapper .item-slide{
+    width:100%;
+    height: 120rpx;
+    position: relative;
+    overflow: hidden;
+    border-top:2rpx solid #ee22ee;
+}
+.item-slide-wrapper .item-slide:last-child{
+    border-bottom:2rpx solid #ee22ee;
+}
+.inner{
+    top:0;
+    position: absolute;
+}
+.item-slide .content{
+    position: absolute;
+    background: #fff;
+    left:0;
+    width:100%;
+    height:120rpx;
+    padding: 0 10rpx;
+    line-height: 120rpx;
+    text-align: left;
+    z-index: 5;
+    /* 此处监测left 的动画 */
+    transition: left 0.2s ease-in-out;
+    /* 控制文本不换行 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-slide .delete{
+    position: absolute;    
+    right:0;
+    z-index: 4;
+    width:180rpx;
+    height: 120rpx;
+    background: #e64340;
+    color:#fff;
+    line-height: 120rpx;
+    text-align: center;
+}

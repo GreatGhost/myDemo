@@ -1,0 +1,8 @@
+<!--components/randomNumber/randomCode.wxml-->
+<view class="random-code">
+    <image wx:if="captchaCodeImg" src="{{captchaCodeImg}}"></image>
+    <view class="code-tip" bindtap="getCaptchaCode">
+        <view>看不清</view>
+        <view>换一张</view>
+    </view>
+</view>

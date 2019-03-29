@@ -1,15 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/product/list/list",
-    "pages/product/search/search",
-    "pages/product/show/show",
-    "pages/map/map",
-    "pages/sailing/sailing",
-    "pages/addFriend/addFriend",
-    "pages/sailDetail/sailDetail",
-    "template/goodsEntry/goodsEntry"
+    "pages/user/mine/mine",
+    "components/dialog/dialog",
+    "pages/user/order/order",
+    "pages/search/search",
+    "pages/login/login",
+    "components/head/head"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,5 +18,36 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
+  },
+  "tabBar": {
+    "list": [
+      {
+        "selectedIconPath": "resource/icon/tab-bar-good.png",
+        "iconPath": "resource/icon/tab-bar-good1.png",
+        "pagePath": "pages/index/index",
+        "text": "外卖"
+      },
+      {
+        "selectedIconPath": "resource/icon/tab-bar-search.png",
+        "iconPath": "resource/icon/tab-bar-search1.png",
+        "pagePath": "pages/search/search",
+        "text": "搜索"
+      },
+      {
+        "selectedIconPath": "resource/icon/tab-bar-order.png",
+        "iconPath": "resource/icon/tab-bar-order1.png",
+        "pagePath": "pages/user/order/order",
+        "text": "订单"
+      },
+      {
+        "selectedIconPath": "resource/icon/tab-bar-mine.png",
+        "iconPath": "resource/icon/tab-bar-mine1.png",
+        "pagePath": "pages/user/mine/mine",
+        "text": "我的"
+      }
+    ],
+    "color": "#cccccc",
+    "selectedColor": "#24252a",
+    "backgroundColor": "#ffffff"
   }
 }

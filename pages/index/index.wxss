@@ -1,3 +1,91 @@
 /**index.wxss**/
-@import "/template/goodsEntry/goodsEntry.wxss" 
+@import '../../template/waterFlow/waterFlow.wxss';
+
+.index{
+  position: relative;
+}
+
+.header {
+  width: 100%;
+  height: 90rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  font-size: 11pt;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+view.warn{
+    background:#e64320;
+    padding:16rpx 0;
+    font-size:24rpx;
+    color:#fff;
+    text-align: center;
+    animation: warn 1s ease-in;
+    opacity: 0;
+}
+view.warn.err{
+    opacity: 1;
+}
+@keyframes warn{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+.rect{
+  width:200rpx;
+  height:200rpx;
+  position: relative;
+  border:1px solid;
+}
+.rect::before{
+  content: '';
+  display: block;
+  position: absolute;
+  width:200rpx;
+  height:20rpx;
+  background: red;
+  top:50%;
+  transform: translateY(-50%);
+}
+.rect::after{
+  content: '';
+  display: block;
+  position: absolute;
+  width:20rpx;
+  height:200rpx;
+  background: red;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+
+.swiper-wrapper{
+  width:100%;
+  height:430rpx;
+}
+.swiper-wrapper swiper{
+  height:430rpx;
+}
+.swiper-wrapper image{
+  width:100%;
+  height:430rpx;
+}
+.zoom{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.zoom button{
+  position: absolute;
+  width:80%;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
 

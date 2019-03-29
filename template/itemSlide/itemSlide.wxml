@@ -1,0 +1,16 @@
+<template name="itemSlide">
+    <view class="item-slide-wrapper">
+            <view class="item-slide">
+                    <view 
+                    class="content inner"
+                    data-index="{{index}}"
+                     style="{{item.txtStyle}}"
+                     bindtouchstart="{{touchS}}"
+                     bindtouchmove="{{touchM}}"
+                     bindtouchend="{{touchE}}" 
+                      >{{index+1}}.{{item.txt}}</view>
+                    <view class="delete inner" bindtap="{{delItem}}" data-index="{{index}}">删除</view>
+            </view>
+        </view>
+
+</template>

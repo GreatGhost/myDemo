@@ -1,0 +1,13 @@
+<template name="waterFlow">
+    <view class="free-WaterfallFlow">
+        <view class="flex-wrap" wx:for="{{img}}" wx:if="{{index%2 ==0}}">
+            <image src="{{item}}" mode="widthFix"></image>
+            <view class="title">你好</view>
+        </view>
+        <view class="flex-wrap" wx:for="{{img}}" wx:if="{{index%2!=0}}">
+            <image src="{{item}}" mode="widthFix"></image>
+            <view class="title">你好</view>
+        </view>
+    </view>
+
+</template>

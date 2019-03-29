@@ -1,0 +1,29 @@
+<template name="three-pick">
+    <view class="three-picker">
+        <button>地址选择</button>
+        <view class="address">{{areaInfo}}</view>
+        <view class="pick-view" animation="{{animationAddressMenu}}" style="visibility:{{addressIsShow ?'visible':'hidden'}}">
+        <!-- 确认取消按钮 -->
+        <view class='btn'>
+            <text catchtap="cityCancel">取消</text>
+            <text style="float: right" catchtap="citySure">确定</text>
+        </view>
+    <!-- 选择地址 -->    
+            <pick-view>
+                <!-- 省 -->
+                <pick-view-column>
+                    <view class="pick-item" wx:for="{{provinces}}" wx:key="{{index}}">{{item.name}}</view>
+                </pick-view-column>
+                <!-- 市 -->
+                <pick-view-column>
+                    <view class="pick-item" wx:for="{{citys}}" wx:key="{{index}}">{{item.name}}</view>
+                </pick-view-column>
+                <!-- 区 -->
+                <pick-view-column>
+                    <view class="pick-item" wx:for="{{areas}}" wx:key="{{index}}">{{item.name}}</view>
+                </pick-view-column>
+            </pick-view>
+        </view>
+
+    </view>
+</template>

@@ -1,8 +1,35 @@
+<import src="/template/waterFlow/waterFlow.wxml" />
+<import src="../../wxParse/wxParse.wxml"/>
 
-<!-- <view>{{address}}</view>
-<button open-type='share' bindtap="tap">分享好友</button>
-<button bindtap="sendCode" style="{{disabled?'#ff6f10':'#999'}}">{{getCode}}</button>
-<view class="time">{{lastTime}}</view> -->
-<import src="/template/goodsEntry/goodsEntry.wxml" />
-<template is="goodsEntry" data="{{item}}"></template>
-<view class="text">{{value}}</view>
+
+<view class="index">
+    <view class="swiper-wrapper">
+        <swiper indicator-dots="{{true}}" autoplay="{{true}}" >
+            <block wx:for="{{swiperImages}}">
+                <swiper-item>
+                    <image src="{{item.url}}" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="zoom" wx:if="{{canIUse}}">        
+        <button open-type="getUserInfo"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户权限</button>
+    </view>
+    <view class='test' bindtap="test">测试</view>
+
+
+ <!-- 触发下拉事件的按钮 -->
+<view class='header' bindtap="toggle"><text>{{accouontName}}</text><text>切换</text></view>
+<view class="word">{{accountName}}</view>
+<!-- 组件:下拉弹出框 -->
+<!-- <template-dialog id="dialog" account="{{account}}" accountName="{{accountName}}" bind:action="switchAccount"></template-dialog> -->
+<view class="img">测试富文本</view>
+
+<template is="wxParse" data="{{wxParseData:article.nodes}}" wx:if="{{!useRichText}}" />
+<view class="img">测试富文本2</view>
+<rich-text nodes="{{nodes}}" wx:if="{{useRichText}}"></rich-text>
+
+<view class="waterFlow">瀑布流</view>
+<template is="waterFlow" data="{{img}}"></template>
+</view>
+ 

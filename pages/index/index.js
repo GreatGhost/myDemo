@@ -1,171 +1,128 @@
 //index.js
 //获取应用实例
-const util=require('../../utils/util.js')
-const app = getApp()
+const util = require('../../utils/util.js')
+const app = getApp();
+const service =require("../../utils/service")
+
+var WxParse = require('../../wxParse/wxParse.js');
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    start:'',
-    end:'',
-    switch:false,
-    footer:{
-      msg:'1',
-      arr:[1,2,3],      
-    },
-    item:{title:'录入卸货重量',mask:true},
-  },
-  map(){
-    wx.navigateTo({
-      url:'/pages/map/map'
-    })
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  getPhp(){
-    wx.connectSocket({
-      url: '../test.php'
-    })
-  },
-  switch1Change(e){
-    var value=e.detail.value;
-    console.log(value);
-  },
-  setCanvas(){
-    const context = wx.createCanvasContext('firstCanvas')
-
-    context.setStrokeStyle('#00ff00')
-    context.setLineWidth(5)
-    context.rect(0, 0, 200, 200)
-    context.stroke()
-    context.setStrokeStyle('#ff0000')
-    context.setLineWidth(2)
-    context.moveTo(160, 100)
-    context.arc(100, 100, 60, 0, 2 * Math.PI, true)
-    context.moveTo(140, 100)
-    context.arc(100, 100, 40, 0, Math.PI, false)
-    context.moveTo(85, 80)
-    context.arc(80, 80, 5, 0, 2 * Math.PI, true)
-    context.moveTo(125, 80)
-    context.arc(120, 80, 5, 0, 2 * Math.PI, true)
-    context.stroke()
-    context.draw()
-  },
-  setTime(){
-    var date = new Date();
-    let year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
-    let start = year + '-' + month + '-' + day;
-    let end = (year + 3) + "-" + 12 + '-' + 30;
-    this.setData({start,end});
-    console.log(start+end);
-  },
-  onLoad: function () {
-    //this.setTime();
-    //this.sendCode();
-    //this.getLocation();
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-
-  getLocation(){
-    let that=this;
-    wx.getLocation({
-      success: function(res) {
-        let latitude = res.latitude; // 纬度
-        let longitude = res.longitude; // 经度
-        let obj={};
-        Object.assign(obj, { latitude, longitude});
-
-        app.apiQuery(obj,'location').then(res=>{
-          let result=res.result;
-          let province = result.address_component.province;
-          let city = result.address_component.city;
-          let district = result.address_component.district;
-          let address = province + city + district;
-          that.setData({
-            address: address
-          })
-        })
+    swiperImages: [{
+        url: '../../resource/image/swiper1.jpg'
       },
+      {
+        url: '../../resource/image/swiper2.jpg'
+      },
+      {
+        url: '../../resource/image/swiper3.jpg'
+      },
+    ],
+    accountName: "李宗盛",
+    account: [
+        { "name": "李小冉" },
+        { "name": "李冰" },
+        { "name": "李浩然" },
+        { "name": "李宗盛" },
+    ],
+    img : [
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531825645104&di=0cfede1dd354581e22385b1862375a6a&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F13%2F71%2F35%2F24k58PICSiB_1024.jpg',
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531825645032&di=826b8cfa4f7c5a8765d5c2156913dcbb&imgtype=0&src=http%3A%2F%2Fimg382.ph.126.net%2Fp4dMCiiHoUGxf2N0VLspkg%3D%3D%2F37436171903673954.jpg',
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531825645104&di=2c9e1223e705806967640495e4bac26b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0147a458783b1ba801219c77f9ec2e.jpg%402o.jpg',
+      'http://t1.hxzdhn.com/uploads/tu/bj/slt/yezpvg0x23b.jpg',
+      'http://t1.hxzdhn.com/uploads/tu/201807/9999/95ed87388b.jpg',
+      'http://t1.hxzdhn.com/uploads/tu/201807/9999/99495c4cf4.jpg',
+      'http://t1.hxzdhn.com/uploads/tu/201807/9999/f867c97e25.jpg',
+      'http://t1.hxzdhn.com/uploads/tu/201807/9999/2cc7ab0bc5.jpg',
+      'http://t1.hxzdhn.com/uploads/tu/201807/9999/2f4435caaf.jpg',
+      'http://t1.hxzdhn.com/uploads/tu/201807/9999/ce76898540.jpg',
+      'http://t1.hxzdhn.com/uploads/tu/201807/9999/a2ccc41e47.jpg',
+      'http://t2.hddhhn.com/uploads/tu/201707/521/83.jpg',
+      'http://t2.hddhhn.com/uploads/tu/20150700/2hndrjt0jxe.jpg',
+      'http://t2.hddhhn.com/uploads/tu/20150700/2hndrjt0jxe.jpg',
+    ],
+  },
+
+
+  /**
+   * 页面加载事件
+   * @method onLoad
+   * @param options
+   * 
+   */
+  onLoad: function (options) {
+    var that = this;
+    // 查看是否授权
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console.log(res)
+              // console.log(res.userInfo)
+              that.setData({
+                nickName: res.userInfo.nickName, //昵称
+                avatarUrl: res.userInfo.avatarUrl //头像
+              })
+            }
+          })
+        } else {
+
+        }
+      }
+    })
+    this.showTxtImg();
+    service.cityGuess().then(res=>{
+      console.log(res);
+    });
+  },
+  onShow(){
+    let useRichText=wx.canIUse('rich-text')
+    console.log(useRichText);
+    this.setData({
+      useRichText
     })
   },
-  onShareAppMessage(res){
-    if(res.from==='button'){
-      return {
-        title:'一起学习',
-        path:'pages/index/index',
-        imageUrl:'../../resource/image/location.png'
-      }
-    }
+
+  redclick(){
+    console.log('red')
   },
-   sendCode: function (e) {
-    var that = this;
-    var times = 24*60*60*1000;
-    var i = setInterval(function () {
-      times-=1000;
-      if (times <= 0) {
-        that.setData({
-          color: "#ff6f10",
-          disabled: false,
-          getCode: "获取验证码",
-        })
-        clearInterval(i)
-      } else {
-        let hour=Math.floor(times/1000/60/60%24);
-        let minute=Math.floor(times/1000/60%60);
-        let second=Math.floor(times/1000%60);
-        that.setData({
-          getCode: "重新获取" + times + "s",
-          lastTime:hour+'小时'+minute+'分钟'+second+'秒',
-          color: "#999",
-          disabled: true
-        })
-      }
-    }, 1000)
+  yellowclick(){
+    console.log('yellow')
   },
-  cancel(){
-    console.log('取消');
-    this.setData({item:{mask:false}})
+  blueclick(){
+    console.log('blue')
   },
-  confirm(){
-    console.log('确认');
-    this.setData({item:{mask:false}})
+  onGotUserInfo(e) {
+    console.log(e.detail.errMsg);
+    console.log(e.detail.userInfo);
+    console.log(e.detail.rawData);
   },
-  change(e){
-    let value=e.detail.value;
-    this.setData({value})
+onReady: function (e) {
+    this.dialog = this.selectComponent("#dialog");//通过给组件所起的id调用组件
+},
+toggle: function (e) {
+    this.dialog.toggle()
+},    //给头部添加的调出下拉框的事件
+switchAccount: function (options) {
+    this.setData({
+        accountName: options.detail
+   })
+}, //组件内部
+
+showTxtImg(){
+  let productExtTxt='<img src="http://img.baidu.com/hi/jx2/j_0003.gif"/>';
+  let productExtTxt2='<p><br/></p><p><img src="http://img.baidu.com/hi/jx2/j_0081.gif"/><img src="http://img.baidu.com/hi/jx2/j_0076.gif"/></p><p>测<span style="background-color: rgb(255, 0, 0);">试富文本编辑器转微信小程序功能</span></p><p><span style="border: 1px solid rgb(0, 0, 0);">测试富文本编辑器转微信小程序功能1</span></p><p><span style="color: rgb(0, 176, 240);">测试富文本编辑器转微信小程序功能2</span></p><p><span style="text-decoration: underline;">测试富文本编辑器转微信小程序功能3</span></p><p>测试富文本编辑器转微信小程序功能4</p><p><strong>测试富文本编辑器转微信小程序功能5</strong><br/></p>'
+  let rich_productExtTxt_txt = app.replaceSrc(productExtTxt);
+  let that=this;
+/*** WxParse.wxParse(bindName , type, data, target,imagePadding)
+* 1.bindName绑定的数据名(必填)
+* 2.type可以为html或者md(必填)
+* 3.data为传入的具体数据(必填)
+* 4.target为Page对象,一般为this(必填)
+* 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)*/ 
+var temp = WxParse.wxParse('article', 'html',productExtTxt2, that, 5);
+  that.setData({nodes:productExtTxt2});
   }
 })

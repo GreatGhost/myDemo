@@ -1,0 +1,20 @@
+<!--pages/user/mine.wxml-->
+<view class='user' wx:if="{{canIUse}}">
+  <button open-type='getUserInfo' wx:if="{{!userInfo}}">确认授权</button>
+  <button wx:if="{{location}}">获取地理位置</button>
+  <view class="user-info">{{userInfo.nickName}}</view>
+  
+  
+  <!-- 用户列表 -->
+  <view class="user-mine">
+    <view class="mine-item" wx:for="{{mineInfo}}" bindtap="switchTap" data-item="{{item}}">
+      <view class="name">{{item.name}}</view>
+      <image class="arrow-right" src="/resource/icon/arrow.png"></image>
+    </view>
+  </view>
+
+
+</view>
+
+
+<view wx:if="{{!canIUse}}">当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试</view>

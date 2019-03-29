@@ -1,0 +1,7 @@
+<!--pages/user/order/order.wxml-->
+
+<import src="/template/itemSlide/itemSlide.wxml" />
+
+<view class="order">
+        <template is="itemSlide" data="{{item:item, index:index, touchS:'touchS', touchM:'touchM', touchE:'touchE',delItem:'delItem'}}" wx:for="{{list}}"></template>
+</view>

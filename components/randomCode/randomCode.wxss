@@ -1,0 +1,21 @@
+/* components/randomNumber/randomCode.wxss */
+.random-code{
+    display: flex;
+    align-items: center;
+}
+.random-code image{
+    width: 164rpx;
+    height:74rpx;
+    margin-right:10rpx;
+}
+.random-code view.code-tip{
+    font-size: 34rpx;
+
+}
+.random-code view.code-tip view:first-child{
+    color: #666;
+}
+.random-code view.code-tip view:last-child{
+    margin-top:9rpx;
+    color: #3b95e9;
+}
