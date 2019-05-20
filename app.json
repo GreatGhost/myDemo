@@ -49,5 +49,6 @@
     "color": "#cccccc",
     "selectedColor": "#24252a",
     "backgroundColor": "#ffffff"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

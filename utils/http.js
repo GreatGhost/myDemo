@@ -15,10 +15,11 @@ function httpRequest(url, method, param) {
             if (typeof param[key] != 'undefined') {
                 map[key] = param[key];
             }
+            return map;
         }, {})
     }
     //Object.assign(rdata, param);
-
+    param={...param};
     return new Promise(function (resolve, reject) {
         wx.request({
             method: method,
@@ -42,45 +43,6 @@ function httpPost(url,param) {
     return httpRequest(url, 'POST', param);
 }
 
-const wxRequest = async (url, data = {}, method, hideLoading) => {
-    //默认带上openid
-    Object.assign(data, {
-        openid: app.globalData.openid
-      });
-      let header = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      };
-      //默认使用POST方式
-      method = method || 'POST';
-      // hideLoading可以控制是否显示加载状态
-      if (!hideLoading) {
-        wx.showLoading({
-          title: '加载中...',
-        })
-      };
-      let res = await new Promise((resolve, reject) => {
-        wx.request({
-          url: url,
-          method: method,
-          data: data,
-          header: header,
-          success: (res) => {
-            if (res && res.data && res.data.status == 200) {
-              resolve(res.data);
-            } else {
-              reject(res);
-            }
-          },
-          fail: (err) => {
-            reject(err);
-          },
-          complete: () => {
-            wx.hideLoading();
-          }
-        });
-      }).catch((e)=>{return e.data});
-      return res;
-  }
 /* 默认传参 */
 function requestData() {
     try {
@@ -92,7 +54,7 @@ function requestData() {
         };
         return data;
     } catch (err) {
-        console.err(err);
+        //console.err(err);
     }
 }
 module.exports = {

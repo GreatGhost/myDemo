@@ -16,7 +16,7 @@
         <button open-type="getUserInfo"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户权限</button>
     </view>
     <view class='test' bindtap="test">测试</view>
-
+  <button bindtap="getLogin">跳转登录</button>
 
  <!-- 触发下拉事件的按钮 -->
 <view class='header' bindtap="toggle"><text>{{accouontName}}</text><text>切换</text></view>
@@ -31,5 +31,6 @@
 
 <view class="waterFlow">瀑布流</view>
 <template is="waterFlow" data="{{img}}"></template>
+
 </view>
  
